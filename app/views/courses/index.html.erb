@@ -1,0 +1,13 @@
+<div class="flex flex-col justify-center items-center h-screen p-5">
+  <h3 class="mb-20 text-4xl font-bold">Courses</h3>
+  <div class="flex flex-col gap-y-5">
+    <% @courses.each do |course| %>
+      <%
+=begin%>
+ <%= link_to department.name, department_path(department) %> 
+<%
+=end%>
+      <p><%= course.title %></p>
+    <%end %>
+  </div>
+</div>

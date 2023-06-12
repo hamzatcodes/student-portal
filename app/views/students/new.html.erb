@@ -1,0 +1,86 @@
+<%= render 'components/errors', obj: @student %>
+<div class="h-screen flex">
+  <div class="hidden lg:flex w-full lg:w-1/2 login_img_section
+  justify-around items-center">
+    <div 
+      class=" 
+      bg-black 
+      opacity-20 
+      inset-0 
+      z-0"
+      >
+
+    </div>
+    <div class="w-full mx-auto px-20 flex-col items-center space-y-6">
+      <h1 class="text-white font-bold text-4xl font-sans">Student Portal</h1>
+      <p class="text-white mt-1">The simplest app to use</p>
+      <div class="flex justify-center lg:justify-start mt-6">
+          <a href="#" class="hover:bg-indigo-700 hover:text-white hover:-translate-y-1 transition-all duration-500 bg-white text-indigo-800 mt-4 px-4 py-2 rounded-2xl font-bold mb-2">Login</a>
+      </div>
+    </div>
+  </div>
+  <div class="flex w-full lg:w-1/2 justify-center items-center bg-white space-y-8">
+    <div class="w-full px-8 md:px-32 lg:px-24">
+      <%= form_with(model: @student, class: 'shadow mb-3 p-3 bg-info roundedbg-white rounded-md shadow-2xl p-5', data: { turbo: false }) do |f| %>
+        <h1 class="text-gray-800 font-bold text-2xl mb-1">Hello Student!</h1>
+        <p class="text-sm font-normal text-gray-600 mb-8">Register your account</p>
+        <div class="flex items-center border-2 mb-8 py-2 px-3 rounded-2xl">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5 text-gray-400">
+            <path fill-rule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clip-rule="evenodd" />
+          </svg>
+          <%= f.text_field :name, class: 'pl-2 w-full outline-none border-none', required: true, placeholder: 'Full Name' %>
+        </div>
+
+        <div class="flex items-center border-2 mb-8 py-2 px-3 rounded-2xl">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 text-gray-400">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+          </svg>
+
+          <%= f.text_field :matric_no, class: 'pl-2 w-full outline-none border-none', required: true, placeholder: 'Matric Number', maxLength: 15, minLength: 15 %>
+        </div>
+
+        <div class="flex items-center border-2 mb-8 py-2 px-3 rounded-2xl">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 text-gray-400">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+          </svg>
+          <%= f.select(:department_id, Department.order(:name).map { |department| [department.name, department.id] }, { prompt: "Select your department from the list below" }, {class: 'pl-2 w-full outline-none border-none' }) %>
+        </div>
+
+        <div class="flex items-center border-2 mb-8 py-2 px-3 rounded-2xl">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+          </svg>
+          <%= f.email_field :email, class: 'pl-2 w-full outline-none border-none', required: true, placeholder: 'Email Address' %>
+        </div>
+
+        <div class="flex items-center border-2 mb-8 py-2 px-3 rounded-2xl">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 text-gray-400">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+          </svg>
+          <%= f.date_field :age, class: 'pl-2 w-full outline-none border-none', required: true, placeholder: 'Age' %>
+        </div>
+        <div class="flex items-center border-2 mb-8 py-2 px-3 rounded-2xl ">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+            <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+          </svg>
+          <%= f.password_field :password, class: 'pl-2 w-full outline-none border-none', required: true, placeholder: 'Password' %>
+          
+        </div>
+        <div class="flex items-center border-2 mb-12 py-2 px-3 rounded-2xl ">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+            <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+          </svg>
+          <%= f.password_field :password_confirm, class: 'pl-2 w-full outline-none border-none', required: true, placeholder: 'Confirm Password' %>
+          
+        </div>
+        <%= f.submit "Register", class: 'block w-full bg-indigo-600 mt-5 py-2 rounded-2xl hover:bg-indigo-700 hover:-translate-y-1 transition-all duration-500 text-white font-semibold mb-2 hover:cursor-pointer' %>
+        <div class="flex justify-between mt-4">
+          <span class="text-sm ml-2 hover:text-blue-500 cursor-pointer hover:-translate-y-1 duration-500 transition-all">Go Home</span>
+
+          <a href="#" class="text-sm ml-2 hover:text-blue-500 cursor-pointer hover:-translate-y-1 duration-500 transition-all">Have an account?</a>
+        </div>
+      <% end %>
+    </div>
+    
+  </div>
+</div>

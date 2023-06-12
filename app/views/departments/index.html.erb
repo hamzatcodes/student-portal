@@ -1,0 +1,8 @@
+<div class="flex flex-col justify-center items-center h-screen p-5">
+  <h3 class="mb-20 text-4xl font-bold">Departments</h3>
+  <div class="flex flex-col gap-y-5 underline">
+    <% @departments.each do |department| %>
+      <%= link_to department.name, department_path(department) %>
+    <%end %>
+  </div>
+</div>

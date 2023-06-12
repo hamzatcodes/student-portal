@@ -1,0 +1,17 @@
+<div class="flex flex-col justify-center items-center h-screen p-5">
+  <h3 class="mb-20 text-4xl font-bold"><%= @department.name %></h3>
+  <div class="grid grid-cols-2 gap-10">
+    <div class="flex flex-col gap-y-5 underline">
+      <h2 class="font-bold text-lg">Courses</h2>
+      <% @department.courses.each do |course| %>
+        <%= link_to course.title, department_path(course) %>
+      <%end %>
+    </div>
+    <div class="flex flex-col gap-y-5 underline">
+      <h2 class="font-bold text-lg">Students</h2>
+      <% @department.students.each do |student| %>
+        <%= link_to student.name, student_path(student) %>
+      <%end %>
+    </div>
+  </div>
+</div>
