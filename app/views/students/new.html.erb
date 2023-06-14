@@ -1,6 +1,6 @@
 <%= render 'components/errors', obj: @student %>
-<div class="h-screen flex">
-  <div class="hidden lg:flex w-full lg:w-1/2 login_img_section
+<div class="flex">
+  <div class="hidden bg-fixed bg-cover bg-center lg:flex w-full h-screen sticky top-0 lg:w-1/2 login_img_section
   justify-around items-center">
     <div 
       class=" 
@@ -20,8 +20,8 @@
     </div>
   </div>
   <div class="flex w-full lg:w-1/2 justify-center items-center bg-white space-y-8">
-    <div class="w-full px-8 md:px-32 lg:px-24">
-      <%= form_with(model: @student, class: 'shadow mb-3 p-3 bg-info roundedbg-white rounded-md shadow-2xl p-5', data: { turbo: false }) do |f| %>
+    <div class="w-full px-8 md:px-32 lg:px-24 mb-10">
+      <%= form_with(model: @student, class: 'shadow mb-3 p-3 bg-info roundedbg-white rounded-md shadow-2xl p-5 my-10', data: { turbo: false }) do |f| %>
         <h1 class="text-gray-800 font-bold text-2xl mb-1">Hello Student!</h1>
         <p class="text-sm font-normal text-gray-600 mb-8">Register your account</p>
         <div class="flex items-center border-2 mb-8 py-2 px-3 rounded-2xl">

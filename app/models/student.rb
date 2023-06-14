@@ -1,7 +1,7 @@
 class Student < ApplicationRecord
   before_save { self.email = email.downcase }
 
-  has_one :score, dependent: :destroy
+  has_many :score, through: :courses, dependent: :destroy
   belongs_to :department
 
   validates :name, presence: true

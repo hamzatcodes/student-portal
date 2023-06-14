@@ -45,7 +45,13 @@
           >
             <%= @student.name %>
           </h2>
-          <p class="text-xs text-gray-500 text-center"><%= @student.department.name %></p>
+          <p class="text-xs text-gray-500 text-center">
+          <%if @student.admin? %>
+            <%= "ADMIN" %>
+            <% else %>
+            <%= @student.department.name %>
+          <% end %>
+          </p>
         </div>
       </div>
       <div
@@ -145,11 +151,8 @@
         <% @student.department.courses.each do |course| %>
           <div class="flex justify-between">
             <h2><%= course.title %></h2>
-            <%
-=begin%>
- <h3><%= course.scores %></h3> 
-<%
-=end%>
+
+            <h3><%= 0 %></h3>  
           </div>
         <% end %>
       </div>

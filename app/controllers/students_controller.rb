@@ -57,7 +57,7 @@ class StudentsController < ApplicationController
   end
 
   def require_same_student
-    if current_student != @student
+    if current_student != @student || !current_student.admin?
       flash[:alert] = "You are not authorized to view this page"
       redirect_to @student
     end
